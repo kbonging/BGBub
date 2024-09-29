@@ -22,3 +22,4 @@ values('lee@gmail.com', '1234', '이창섭',NOW());
 
 
 select * from member;
+
