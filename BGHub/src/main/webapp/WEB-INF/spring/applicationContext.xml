@@ -10,21 +10,22 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <!-- Bean definitions go here -->
+    <!--MySQL 접속 정보 설정-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-	    <property name="url" value="jdbc:mysql://localhost:3306/springDB" />
+	    <property name="url" value="jdbc:mysql://localhost:3308/springDB" />
 	    <property name="username" value="root" />
 	    <property name="password" value="1234" />
 	</bean>
 	
+	<!-- Spring의 JdbcTemplate을 사용하여 데이터베이스에 간단한 SQL 쿼리를 실행할 수 있는 템플릿을 설정 -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 	    <property name="dataSource" ref="dataSource" />
 	</bean>
 	
+	<!-- mybatis-config.xml 파일 경로를 설정하여 MyBatis의 전역 설정을 로드합니다. -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<!-- <property name="mapperLocations" value="classpath:/mappers/**/*_SQL.xml" /> -->
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 	</bean>
 	
@@ -32,7 +33,13 @@
 	    <constructor-arg index="0" ref="sqlSessionFactory"/>
 	</bean>  
 
-
-	<bean id="boardDAO" class="com.SpringProject.board.service.BoardDAO" />
+	<!-- Service, DAO 빈 등록 -->
+	<!-- @Service, @Repository, @Controller 등의 빈을 자동으로 등록하기 위해 component-scan 태그를 사용하여 패키지를 스캔합니다. -->
+	<context:component-scan base-package="com.SpringProject.board" />
+	<context:component-scan base-package="com.SpringProject.member" />
+	<context:component-scan base-package="com.SpringProject.cmm" />
+	
+	<!-- <bean id="boardDAO" class="com.SpringProject.board.service.BoardDAO" />
+	<bean id="boardService" class="com.SpringProject.board.service.BoardServiceImpl" /> -->
 	
 </beans>
