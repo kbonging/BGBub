@@ -7,6 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.SpringProject.member.vo.MemberVO;
+
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
 
@@ -21,5 +23,11 @@ public class MemberServiceImpl implements MemberService {
 		map.put("resultList", result);
 		return map;
 	}
+
+	@Override
+	public MemberVO findByEmail(String memberEmail) {
+		return memberDAO.findByEmail(memberEmail);
+	}
+
 
 }

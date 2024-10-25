@@ -14,3 +14,9 @@ FROM
 WHERE 
     DEL_YN = 'N';
 #########################################
+
+select * from tb_member;
+
+SELECT * FROM tb_member 
+        WHERE MEMBER_EMAIL = 'bong@gmail.com' AND DEL_YN = 'N'
+  

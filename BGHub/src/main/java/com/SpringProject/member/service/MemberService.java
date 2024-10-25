@@ -2,6 +2,8 @@ package com.SpringProject.member.service;
 
 import java.util.Map;
 
+import com.SpringProject.member.vo.MemberVO;
+
 public interface MemberService {
 
 	/**
@@ -12,4 +14,13 @@ public interface MemberService {
 	 * @throws Exception
 	 */
 	public Map<String, Object>  selectMemberList() throws Exception;
+	
+	 
+    /**
+     * 이메일로 회원 정보를 조회한다.
+     *
+     * @param memberEmail
+     * @return MemberVO
+     */
+    public MemberVO findByEmail(String memberEmail);
 }

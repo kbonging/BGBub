@@ -9,4 +9,9 @@
 				select * from TB_MEMBER;
 		 ]]>
 	</select>
+	
+	<select id="findByEmail" parameterType="String" resultType="MemberVO">
+        SELECT * FROM tb_member 
+        WHERE MEMBER_EMAIL = #{memberEmail} AND DEL_YN = 'N'
+    </select>
 </mapper> 

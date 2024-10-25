@@ -10,6 +10,7 @@
     <!-- MyBatis 에서 해당 클래스를 찾을 수 있도록 지정 (각각의 클래스들을 모두 명시해야함) -->
     <typeAliases>
         <typeAlias alias="BoardVO" type="com.SpringProject.board.vo.BoardVO"/>
+        <typeAlias alias="MemberVO" type="com.SpringProject.member.vo.MemberVO"/>
     </typeAliases>
     <mappers>
         <mapper resource="mappers/Board_SQL_MYSQL.xml"/>
