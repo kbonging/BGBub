@@ -89,6 +89,7 @@ h1 {
         <header>
             <h1>게시판 목록</h1>
             <a href="create-post.html" class="btn">글쓰기</a>
+            <a href="/member/logout.do" class="btn">로그아웃</a>
         </header>
         <table class="board-table">
             <thead>

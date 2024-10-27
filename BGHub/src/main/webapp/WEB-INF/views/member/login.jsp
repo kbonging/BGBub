@@ -14,12 +14,12 @@
         <h1>로그인</h1>
         <form action="/member/login.do" method="post">
             <div class="input-group">
-                <label for="username">이메일:</label>
-                <input type="text" id="username" name="username" required>
+                <label for="memberEmail">이메일:</label>
+                <input type="text" id="memberEmail" name="memberEmail" required>
             </div>
             <div class="input-group">
-                <label for="password">비밀번호:</label>
-                <input type="password" id="password" name="password" required>
+                <label for="memberPwd">비밀번호:</label>
+                <input type="password" id="memberPwd" name="memberPwd" required>
             </div>
             <button type="submit">로그인</button>
             <div class="footer">

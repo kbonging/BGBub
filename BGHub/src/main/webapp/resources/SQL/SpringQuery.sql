@@ -18,5 +18,13 @@ WHERE
 select * from tb_member;
 
 SELECT * FROM tb_member 
-        WHERE MEMBER_EMAIL = 'bong@gmail.com' AND DEL_YN = 'N'
+        WHERE MEMBER_EMAIL = 'bong@gmail.com' AND DEL_YN = 'N';
   
+  ###################################
+UPDATE tb_member 
+SET MEMBER_PWD = '$2a$10$kJX8CKTuvUjRbn0q0XhZduE9OY1jVBXF2a55ksZMQS98hatsTk.zG' 
+WHERE MEMBER_EMAIL = 'bong@gmail.com';
+
+
+SET SQL_SAFE_UPDATES = 0;
+

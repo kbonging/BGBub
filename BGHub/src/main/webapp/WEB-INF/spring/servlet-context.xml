@@ -33,7 +33,20 @@
     <!-- <bean class="com.SpringProject.board.controller.BoardController"/> -->
     <context:component-scan base-package="com.SpringProject" />
     
-    
+    <mvc:interceptors>
+	    <mvc:interceptor>
+	        <mvc:mapping path="/**"/> <!-- 모든 경로에 대해 인터셉터 적용 -->
+	        <mvc:exclude-mapping path="/"/> <!-- 메인 페이지 제외 -->
+	        <mvc:exclude-mapping path="/resources/**"/> 
+	        <mvc:exclude-mapping path="/main.do"/> <!-- 메인 페이지 제외 -->
+	        <mvc:exclude-mapping path="/member/login.do"/> <!-- 로그인 페이지 제외 -->
+	        <mvc:exclude-mapping path="/member/register.do"/> <!-- 회원가입 페이지 제외 -->
+	        <mvc:exclude-mapping path="/member/logoutPage"/> <!-- 로그아웃 페이지 제외 -->
+	        <bean class="com.SpringProject.interceptor.LoginInterceptor"/>
+	    </mvc:interceptor>
+	</mvc:interceptors>
+
+
     
 
 </beans>

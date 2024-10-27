@@ -5,19 +5,20 @@ use SpringDB;
 create table tb_member(
 	MEMBER_IDX INT primary key auto_increment COMMENT '회원 고유 번호',
     MEMBER_EMAIL VARCHAR(60) NOT NULL COMMENT '회원 이메일(아이디)',
-    MEMBER_PWD VARCHAR(60) NOT NULL COMMENT '회원 비밀번호',
+    MEMBER_PWD VARCHAR(255) NOT NULL COMMENT '회원 비밀번호',
     MEMBER_NAME VARCHAR(30) NOT NULL COMMENT '회원명',
     DEL_YN CHAR(1) NOT NULL default 'N' comment '삭제여부(Y, N)',
     REG_DATE DATETIME,
     MOD_DATE DATETIME
 );
 # drop table tb_member;
+ALTER TABLE tb_member MODIFY MEMBER_PWD VARCHAR(255);
 
 # 샘플 데이터
 INSERT INTO tb_member(MEMBER_EMAIL, MEMBER_PWD, MEMBER_NAME, REG_DATE)
-values('bong@gmail.com', '1234', '김봉중',NOW());
+values('bong@gmail.com', '$2a$10$kJX8CKTuvUjRbn0q0XhZduE9OY1jVBXF2a55ksZMQS98hatsTk.zG', '김봉중',NOW());
 INSERT INTO tb_member(MEMBER_EMAIL, MEMBER_PWD, MEMBER_NAME, REG_DATE)
-values('lee@gmail.com', '1234', '이창섭',NOW());
+values('lee@gmail.com', '$2a$10$kJX8CKTuvUjRbn0q0XhZduE9OY1jVBXF2a55ksZMQS98hatsTk.zG', '이창섭',NOW());
 
 
 select * from tb_member;

@@ -35,9 +35,12 @@
 
 	<!-- Service, DAO 빈 등록 -->
 	<!-- @Service, @Repository, @Controller 등의 빈을 자동으로 등록하기 위해 component-scan 태그를 사용하여 패키지를 스캔합니다. -->
-	<context:component-scan base-package="com.SpringProject.board" />
+	<context:component-scan base-package="com.SpringProject" />
+	
+	<!-- <context:component-scan base-package="com.SpringProject.board" />
 	<context:component-scan base-package="com.SpringProject.member" />
 	<context:component-scan base-package="com.SpringProject.cmm" />
+	<context:component-scan base-package="com.SpringProject.config" /> -->
 	
 	<!-- <bean id="boardDAO" class="com.SpringProject.board.service.BoardDAO" />
 	<bean id="boardService" class="com.SpringProject.board.service.BoardServiceImpl" /> -->

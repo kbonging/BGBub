@@ -40,7 +40,7 @@ public class MemberVO extends DefaultVO{
 	
 	@Override
 	public String toString() {
-		return "MemberVO [memberIdx=" + memberIdx + ", memberEmail=" + memberEmail + ", memberPw=" + memberPwd
+		return "MemberVO [memberIdx=" + memberIdx + ", memberEmail=" + memberEmail + ", memberPwd=" + memberPwd
 				+ ", memberName=" + memberName + "]";
 	}
     
