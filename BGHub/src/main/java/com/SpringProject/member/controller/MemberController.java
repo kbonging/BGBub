@@ -40,6 +40,7 @@ public class MemberController {
         return "/member/login";
     }
 
+    /* 로그인 처리 */
     @PostMapping("/member/login.do") // POST 요청 처리
     public String login(@ModelAttribute("memberVO") MemberVO memberVO, Model model, HttpSession session, 
     		HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -63,6 +64,8 @@ public class MemberController {
     			// 로그인 성공 시 필요한 정보만 세션에 저장
                 session.setAttribute("memberIdx", resultVO.getMemberIdx()); // 회원 고유 번호 저장
                 session.setAttribute("memberEmail", resultVO.getMemberEmail()); // 회원 이메일 저장
+                // 세션 유효 시간 설정 (30분 = 1800초)
+                session.setMaxInactiveInterval(1800);
                 
                 return "redirect:/"; // 메인 페이지로 리다이렉트
     		}
@@ -72,6 +75,7 @@ public class MemberController {
     	return "/common/message";
     }
     
+    /* 로그아웃 처리 */
     @GetMapping("/member/logout.do")
     public String logout(HttpSession session, HttpServletResponse response) {
         // 세션 무효화
@@ -83,7 +87,7 @@ public class MemberController {
         return "redirect:/member/logoutPage"; // 로그아웃 페이지로 리다이렉트
     }
 
-    // 로그아웃 처리 페이지
+    /*로그아웃 처리 페이지 */
     @GetMapping("/member/logoutPage")
     public String logoutPage(HttpServletResponse response) {
         // 상태 코드 설정

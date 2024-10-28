@@ -12,6 +12,7 @@ create table tb_member(
     MOD_DATE DATETIME
 );
 # drop table tb_member;
+drop table member;
 ALTER TABLE tb_member MODIFY MEMBER_PWD VARCHAR(255);
 
 # 샘플 데이터
