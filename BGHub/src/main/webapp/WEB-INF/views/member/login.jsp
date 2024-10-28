@@ -24,7 +24,7 @@
             <button type="submit">로그인</button>
             <div class="footer">
                 <a href="#">비밀번호 찾기</a>
-                <a href="#">회원가입</a>
+                <a href="/member/register.do">회원가입</a>
             </div>
         </form>
     </div>
