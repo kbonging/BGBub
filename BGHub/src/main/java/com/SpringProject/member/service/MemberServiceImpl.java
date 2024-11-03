@@ -25,8 +25,13 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberVO findByEmail(String memberEmail) {
+	public MemberVO findByEmail(String memberEmail) throws Exception {
 		return memberDAO.findByEmail(memberEmail);
+	}
+
+	@Override
+	public int insertMember(MemberVO memberVO) throws Exception {
+		return memberDAO.insertMember(memberVO);
 	}
 
 

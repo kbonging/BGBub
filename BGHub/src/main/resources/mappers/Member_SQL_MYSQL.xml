@@ -14,4 +14,17 @@
         SELECT * FROM tb_member 
         WHERE MEMBER_EMAIL = #{memberEmail} AND DEL_YN = 'N'
     </select>
+    
+    <insert id="insertMember" parameterType="MemberVO" >
+    	INSERT INTO tb_member(
+    		MEMBER_EMAIL, 
+    		MEMBER_PWD, 
+    		MEMBER_NAME, 
+    		REG_DATE)
+		values(
+			#{memberEmail},
+			#{memberPwd},
+			#{memberName},
+			NOW());
+    </insert>
 </mapper> 

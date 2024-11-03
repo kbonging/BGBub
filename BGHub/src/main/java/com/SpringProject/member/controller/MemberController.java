@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,9 @@ public class MemberController {
     
     @Autowired
     private PasswordEncoder passwordEncoder; // PasswordEncoder 주입
+    
+    private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+
 
     @RequestMapping(value = "/member/memberList.do")
     public String memberList() throws Exception {
@@ -84,22 +89,33 @@ public class MemberController {
             session.setAttribute("memberEmail", null); // 회원 이메일 저장
             session.invalidate();
         }
-        return "redirect:/member/logoutPage"; // 로그아웃 페이지로 리다이렉트
-    }
-
-    /*로그아웃 처리 페이지 */
-    @GetMapping("/member/logoutPage")
-    public String logoutPage(HttpServletResponse response) {
-        // 상태 코드 설정
-        response.setStatus(HttpServletResponse.SC_OK);
         return "redirect:/"; // 메인 페이지로 리다이렉트
     }
 
     /* 회원가입 페이지 이동 */
     @GetMapping("/member/register.do")
     public String memberRegister() throws Exception {
+    	logger.info("회원가입 페이지 이동");
         return "/member/register";
     }
-
+    
+    /* 회원가입 처리*/
+    @PostMapping("/member/regist.do")
+    public String memberRegist(@ModelAttribute("memberVO") MemberVO memberVO, Model model) throws Exception {
+    	String url = "/member/register.do", msg = "회원가입 중 문제가 발생했습니다. 고객센터(1544-1234)로 문의해 주세요.";
+    	
+    	// 비밀번호 암호화 후 VO에 비밀번호 세팅
+    	memberVO.setMemberPwd(passwordEncoder.encode(memberVO.getMemberPwd()));
+    	
+    	int cnt = memberService.insertMember(memberVO);
+    	if(cnt == 1) { // 등록 처리 완료
+    		url = "/member/login.do";
+    		msg = "회원가입이 완료되었습니다!";
+    	}
+    	
+    	model.addAttribute("url", url);
+    	model.addAttribute("msg", msg);
+    	return "/common/message";
+    }
 
 }
