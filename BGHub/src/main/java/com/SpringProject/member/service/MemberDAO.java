@@ -15,25 +15,19 @@ public class MemberDAO {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
-	/**
-	 * 회원 목록을 조회한다.
-	 *
-	 * @param 
-	 * @return Map<String, Object>
-	 * @throws Exception
-	 */
-	public List<Map<String, Object>> selectMemberList(){
+	/* 회원 목록을 조회한다. */
+	public List<Map<String, Object>> selectMemberList() throws Exception{
 		System.out.println("start MemberDAO - selectMemberList");
 		return this.sqlSessionTemplate.selectList("MemberDAO.selectMemberList");
 	}
 	
-	 /**
-     * 이메일로 회원 정보를 조회한다.
-     *
-     * @param memberEmail
-     * @return MemberVO
-     */
-    public MemberVO findByEmail(String memberEmail) {
+	 /* 이메일로 회원 정보를 조회한다. */
+    public MemberVO findByEmail(String memberEmail) throws Exception{
         return this.sqlSessionTemplate.selectOne("MemberDAO.findByEmail", memberEmail);
+    }
+    
+    /*회원 등록처리 */
+    public int insertMember(MemberVO memberVO) throws Exception{
+    	return this.sqlSessionTemplate.insert("MemberDAO.insertMember", memberVO);
     }
 }

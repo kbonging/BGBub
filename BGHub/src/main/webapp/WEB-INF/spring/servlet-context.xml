@@ -40,8 +40,11 @@
 	        <mvc:exclude-mapping path="/resources/**"/> 
 	        <mvc:exclude-mapping path="/main.do"/> <!-- 메인 페이지 제외 -->
 	        <mvc:exclude-mapping path="/member/login.do"/> <!-- 로그인 페이지 제외 -->
+	        <mvc:exclude-mapping path="/member/logout.do"/> <!-- 로그아웃 제외 -->
 	        <mvc:exclude-mapping path="/member/register.do"/> <!-- 회원가입 페이지 제외 -->
-	        <mvc:exclude-mapping path="/member/logoutPage"/> <!-- 로그아웃 페이지 제외 -->
+	        <mvc:exclude-mapping path="/member/regist.do"/> <!-- 회원가입 처리 제외 -->
+	        <mvc:exclude-mapping path="/email/sendEmail"/> <!-- 이메일 전송 AJAX 요청 제외 -->
+	        <mvc:exclude-mapping path="/email/verifyCode"/> <!-- 이메일 인증 AJAX 요청 제외 -->
 	        <bean class="com.SpringProject.interceptor.LoginInterceptor"/>
 	    </mvc:interceptor>
 	</mvc:interceptors>

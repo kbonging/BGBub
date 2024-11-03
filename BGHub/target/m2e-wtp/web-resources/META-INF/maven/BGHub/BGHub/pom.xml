@@ -10,6 +10,9 @@
     <mysql-connector-version>8.0.23</mysql-connector-version>
     <mybatis-core-version>3.5.9</mybatis-core-version>
     <mybatis-spring-version>2.0.6</mybatis-spring-version>
+    <jackson-version>2.12.3</jackson-version> <!-- JSON 처리 라이브러리 추가 -->
+    <!--<spring-data-redis-version>2.7.5</spring-data-redis-version>--> <!-- Spring Data Redis 버전 -->
+    <!--<jedis-version>3.6.3</jedis-version>--> <!-- Jedis 클라이언트 버전 -->
   </properties>
 
   <build>
@@ -104,6 +107,65 @@
 	    <artifactId>spring-security-config</artifactId>
 	    <version>5.6.10</version>
 	</dependency>
+	
+	 <!-- SLF4J API -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.36</version>
+    </dependency>
+    <!-- SLF4J와 Log4j 연결 -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.7.36</version>
+    </dependency>
+    <!-- Log4j -->
+    <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.17</version>
+    </dependency>
+    
+    <!-- 이메일 설정-->
+    <dependency>
+	    <groupId>javax.mail</groupId>
+	    <artifactId>javax.mail-api</artifactId>
+	    <version>1.6.2</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.sun.mail</groupId>
+	    <artifactId>javax.mail</artifactId>
+	    <version>1.6.2</version>
+	</dependency>
 
+ 	<!-- Spring Mail -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context-support</artifactId>
+        <version>${org.springframework-version}</version>
+    </dependency>
+    
+    <!-- JSON 처리 라이브러리 -->
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson-version}</version>
+    </dependency>
+
+	<!-- Spring Data Redis -->
+    <!--<dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-redis</artifactId>
+      <version>${spring-data-redis-version}</version>
+    </dependency>-->
+    
+    <!-- Jedis -->
+    <!--<dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>${jedis-version}</version>
+    </dependency>-->
+	
   </dependencies>
 </project>

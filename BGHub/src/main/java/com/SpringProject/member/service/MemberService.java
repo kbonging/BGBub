@@ -22,5 +22,8 @@ public interface MemberService {
      * @param memberEmail
      * @return MemberVO
      */
-    public MemberVO findByEmail(String memberEmail);
+    public MemberVO findByEmail(String memberEmail) throws Exception;
+    
+    /*회원 등록처리 */
+    public int insertMember(MemberVO memberVO) throws Exception;
 }
